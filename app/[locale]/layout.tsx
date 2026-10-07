@@ -16,7 +16,7 @@ export function generateStaticParams() {
 export const metadata: Metadata = {
   title: "Arlequin",
   description: "Site éditorial multilingue",
-};
+}
 
 type LocaleLayoutProps = {
   children: ReactNode;
@@ -35,9 +35,11 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
   const localePages = allPages.filter(
     (page) => page.locale === locale && page.translationKey !== "home",
   );
+
+  const lang = locale === "fr" ? "fr-BE" : locale;
   
   return (
-    <html lang={locale}>
+    <html lang={lang}>
     <body className="viverrin min-h-screen bg-black text-neutral-900 antialiased">
     <menu className="container flex justify-between items-center gap-6 py-8">
     <MainNav locale={locale} items={localePages} />
